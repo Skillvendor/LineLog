@@ -9,7 +9,7 @@ class LineLog
   mattr_accessor :formatter
 
 
-  def initialize(app, logger=nil, formatter=::SinatraCustomLogger::Formatters::KeyValue.new)
+  def initialize(app, logger=nil, formatter=LineLog::Formatters::KeyValue.new)
     @app = app
     @logger = logger
     @formatter = formatter

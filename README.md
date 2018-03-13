@@ -9,7 +9,7 @@ LineLog welcomes contribution that would make it better and also any constructiv
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sinatra_custom_logger'
+gem 'line_log'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install sinatra_custom_logger
+    $ gem install line_log
 
 ## Usage
 
