@@ -1,5 +1,5 @@
 class LineLog
-  class Formatters
+  module Formatters
     class KeyValue
       def call(data)
         data.keys
