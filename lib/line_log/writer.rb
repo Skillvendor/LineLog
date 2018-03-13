@@ -1,9 +1,9 @@
 module LineLog
   class Writer
-    def self.log(event, status, began_at, logger)
+    def self.call(event, status, began_at, logger)
       binding.remote_pry
-      data = RequestDataExtractor.call(event, status, began_at)
-      formatted_message = LineLog.formatter.call(data)
+      data = LineLog::RequestDataExtractor.call(event, status, began_at)
+      formatted_message = LineLog::Customizer.formatter.call(data)
 
       # Standard library logger doesn't support write but it supports << which actually
       # calls to write on the log device without formatting

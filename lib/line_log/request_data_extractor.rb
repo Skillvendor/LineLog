@@ -29,7 +29,7 @@ module LineLog
     end
     
     def self.custom_options
-      LineLog.custom_options || {}
+      LineLog::Customizer.options || {}
     end
   end
 end
