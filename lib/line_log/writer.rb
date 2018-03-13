@@ -1,7 +1,6 @@
 module LineLog
   class Writer
     def self.call(event, status, began_at, logger)
-      binding.remote_pry
       data = LineLog::RequestDataExtractor.call(event, status, began_at)
       formatted_message = LineLog::Customizer.formatter.call(data)
 

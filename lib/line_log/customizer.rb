@@ -6,7 +6,7 @@ module LineLog
     def initialize(app, logger=nil, formatter=LineLog::Formatters::KeyValue.new)
       @app = app
       @logger = logger
-      @formatter = formatter
+      @@formatter = formatter
     end
 
     # making it thread safe. Visit https://github.com/cerner/gc_stats/issues/3 for more info about this
