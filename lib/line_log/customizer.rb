@@ -1,7 +1,7 @@
 module LineLog
   class Customizer
-    mattr_accessor :options
-    mattr_accessor :formatter
+    attr_accessor :options
+    attr_accessor :formatter
 
     def initialize(app, logger=nil, formatter=LineLog::Formatters::KeyValue.new)
       @app = app
@@ -21,10 +21,12 @@ module LineLog
       LineLog::Writer.call(event, @status, began_at, @logger)
     end
 
-    private
+    def options=(options)
+      LineLog::Customizer.options = options 
+    end
 
-    def set_formatter(formatter)
+    def formatter=(formatter)
       LineLog::Customizer.formatter = formatter
-    end 
+    end
   end
 end
