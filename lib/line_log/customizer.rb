@@ -22,19 +22,19 @@ module LineLog
     end
 
     def self.options=(options)
-      LineLog::Customizer.options = options 
+      @options = options 
     end
 
     def self.options
-      LineLog::Customizer.options
+      @options
     end
 
     def self.formatter=(formatter)
-      LineLog::Customizer.formatter = formatter
+      @formatter = formatter
     end
 
     def self.formatter
-      LineLog::Customizer.formatter
+      @formatter
     end
   end
 end
