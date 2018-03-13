@@ -1,7 +1,7 @@
 module LineLog
   class Customizer
-    attr_accessor :options
-    attr_accessor :formatter
+    class << self; attr_accessor :formatter end
+    class << self; attr_accessor :options end
 
     def initialize(app, logger=nil, formatter=LineLog::Formatters::KeyValue.new)
       @app = app
@@ -19,22 +19,6 @@ module LineLog
       @status, @headers, @response = @app.call(event)
 
       LineLog::Writer.call(event, @status, began_at, @logger)
-    end
-
-    def self.options=(options)
-      @@options = options 
-    end
-
-    def self.options
-      @@options
-    end
-
-    def self.formatter=(formatter)
-      @@formatter = formatter
-    end
-
-    def self.formatter
-      @@formatter
     end
   end
 end
