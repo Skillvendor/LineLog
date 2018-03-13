@@ -3,7 +3,7 @@ module LineLog
     mattr_accessor :options
     mattr_accessor :formatter
 
-    def initialize(app, logger=nil, formatter=nil)
+    def initialize(app, logger=nil, formatter=LineLog::Formatters::KeyValue.new)
       @app = app
       @logger = logger
       @formatter = formatter
