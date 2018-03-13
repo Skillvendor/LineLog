@@ -20,5 +20,13 @@ module LineLog
 
       LineLog::Writer.call(event, @status, began_at, @logger)
     end
+
+    def options=(options)
+      LineLog::Customizer.options = options 
+    end
+
+    def formatter=(formatter)
+      LineLog::Customizer.formatter = formatter
+    end
   end
 end
