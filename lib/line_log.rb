@@ -5,7 +5,6 @@ require 'line_log/formatters/key_value'
 
 
 class LineLog
-  include LineLog::Formatters
   mattr_accessor :custom_options
   mattr_accessor :formatter
 
