@@ -1,25 +1,27 @@
-module LineLog::Formatters
-  class KeyValue
-    def call(data)
-      data.keys
-        .map { |key| format(key, data[key]) }
-        .join(' ')
-    end
+class LineLog
+  module Formatters
+    class KeyValue
+      def call(data)
+        data.keys
+          .map { |key| format(key, data[key]) }
+          .join(' ')
+      end
 
-    protected
+      protected
 
-    def format(key, value)
-      "#{key}=#{parse_value(key, value)}"
-    end
+      def format(key, value)
+        "#{key}=#{parse_value(key, value)}"
+      end
 
-    def parse_value(key, value)
-      # Exactly preserve the previous output
-      # Parsing this can be ambigious if the error messages contains
-      # a single quote
-      return "'#{value}'" if key == :error
-      return Kernel.format('%.2f', value) if value.is_a? Float
+      def parse_value(key, value)
+        # Exactly preserve the previous output
+        # Parsing this can be ambigious if the error messages contains
+        # a single quote
+        return "'#{value}'" if key == :error
+        return Kernel.format('%.2f', value) if value.is_a? Float
 
-      value
+        value
+      end
     end
   end
 end
