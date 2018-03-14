@@ -35,7 +35,7 @@ Or install it yourself as:
 
   To have your own custom data:
 
-  Form a hash with your custom data and pass it to custom_info.
+  Form a hash with your custom data and pass it to options.
 
 ```
   before do
