@@ -28,7 +28,7 @@ Or install it yourself as:
   configure do
     #implement custom logging
     logger = Logger.new("#{RAILS_ROOT}/log/#{settings.environment}.log")
-    use LineLog, logger
+    use LineLog::Customizer, logger
   end
 
 ```
@@ -39,7 +39,7 @@ Or install it yourself as:
 
 ```
   before do
-    LineLog.custom_options = {
+    LineLog::Customizer.options = {
       user: '-',
       params: request.params,
       agent: request.env['HTTP_USER_AGENT'] || '',
@@ -51,7 +51,7 @@ Or install it yourself as:
 
 ## Inner Workings
 
-LineLog exposes an instance variable that you can populate with a custom hash. That hash is added to the log.
+LineLog::Customizer exposes a class variable(options) that you can populate with a custom hash. That hash is added to the log.
 
 ## Contributing
 
