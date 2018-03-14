@@ -18,8 +18,8 @@ module LineLog
       began_at = Time.now
       @status, @headers, @response = @app.call(event)
 
-      message_builder = LineLog::MessageBuilder.new(event, @status, began_at)
-      LineLog::Writer.call(message_builder, @logger)
+      message = LineLog::MessageBuilder.new(event, @status, began_at).call
+      LineLog::Writer.call(message, @logger)
     end
   end
 end
