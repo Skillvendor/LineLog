@@ -1,0 +1,1 @@
+I, [2018-03-13T16:21:25.000000 #10168]  INFO -- : method=GET path=/happy_path format=text/html ip=127.0.0.1 status=200 duration=2.00 custom=random

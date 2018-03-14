@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'time'
-require 'pry'
 
 describe LineLog::RequestDataExtractor do
   let(:event) do
@@ -8,7 +6,7 @@ describe LineLog::RequestDataExtractor do
       'REQUEST_METHOD' => 'GET',
       'HTTP_ACCEPT' => 'text/html',
       'HTTP_X_REAL_IP' => '127.0.0.1',
-      'REQUEST_PATH' => 'happy_path?param1=maybe'
+      'REQUEST_PATH' => '/happy_path?param1=maybe'
     }
   end
   let(:status) { 200 }
@@ -17,7 +15,7 @@ describe LineLog::RequestDataExtractor do
   def extracted_data(extra_options={})
     {
       method: 'GET',
-      path: 'happy_path',
+      path: '/happy_path',
       format: 'text/html',
       ip: '127.0.0.1',
       status: 200,
