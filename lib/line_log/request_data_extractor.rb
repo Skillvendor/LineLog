@@ -1,17 +1,17 @@
 module LineLog
   class RequestDataExtractor
     def self.call(event, status, began_at)
-      extract_request(event, status, began_at)
+      extract_data_from_request(event, status, began_at)
     end
 
     private
 
-    def self.extract_request(event, status, began_at)
-      data = initial_data(event, status, began_at)
-      data.merge!(custom_options)
+    def self.extract_data_from_request(event, status, began_at)
+      data = default_data(event, status, began_at)
+      data.merge!(custom_data)
     end
 
-    def self.initial_data(event, status, began_at)
+    def self.default_data(event, status, began_at)
       {
         method: event['REQUEST_METHOD'],
         path: extract_path(event),
@@ -28,8 +28,8 @@ module LineLog
       index ? path[0, index] : path
     end
     
-    def self.custom_options
-      LineLog::Customizer.options || {}
+    def self.custom_data
+      LineLog::Customizer.data || {}
     end
   end
 end

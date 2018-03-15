@@ -6,5 +6,4 @@ require 'line_log/customizer'
 require 'line_log/message_builder'
 
 module LineLog
-  
 end

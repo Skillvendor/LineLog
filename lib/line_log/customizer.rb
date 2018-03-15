@@ -1,12 +1,11 @@
 module LineLog
   class Customizer
-    class << self; attr_accessor :formatter end
-    class << self; attr_accessor :options end
+    class << self; attr_accessor :formatter, :data end
 
     def initialize(app, logger=nil, formatter=LineLog::Formatters::KeyValue.new)
       @app = app
       @logger = logger
-      LineLog::Customizer.formatter = formatter
+      self.class.formatter = formatter
     end
 
     # making it thread safe. Visit https://github.com/cerner/gc_stats/issues/3 for more info about this

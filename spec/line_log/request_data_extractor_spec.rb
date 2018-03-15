@@ -43,7 +43,7 @@ describe LineLog::RequestDataExtractor do
         custom_param2: 'random2'
       }
     end
-    before { LineLog::Customizer.options = extra_log_params }
+    before { LineLog::Customizer.data = extra_log_params }
 
     it_behaves_like 'request data extractor', { custom_param1: 'random1', custom_param2: 'random2' }
   end

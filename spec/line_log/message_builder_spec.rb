@@ -17,35 +17,21 @@ describe LineLog::MessageBuilder do
   before(:each) do 
     allow(Time).to receive(:now).and_return(Time.parse('2018-03-13 16:21:25 +0000'))
 
-    LineLog::Customizer.options = { custom: 'random' }
+    LineLog::Customizer.data = { custom: 'random' }
     LineLog::Customizer.formatter = LineLog::Formatters::KeyValue.new
   end
 
-  it 'includes the \'method\' key/value' do
-    expect(subject).to include('method=GET')
-  end
+  it { expect(subject).to include('method=GET') }
 
-  it 'includes the \'path\' key/value' do
-    expect(subject).to include('path=/happy_path')
-  end
+  it { expect(subject).to include('path=/happy_path') }
 
-  it 'includes the \'status\' key/value' do
-    expect(subject).to include('status=200')
-  end
+  it { expect(subject).to include('status=200') }
 
-  it 'includes the \'duration\' key/value' do
-    expect(subject).to include('duration=2.00')
-  end
+  it { expect(subject).to include('duration=2.00') }
 
-  it 'includes the \'format\' key/value' do
-    expect(subject).to include('format=text/html')
-  end
+  it { expect(subject).to include('format=text/html') }
 
-  it 'includes the \'ip\' key/value' do
-    expect(subject).to include('ip=127.0.0.1')
-  end
+  it { expect(subject).to include('ip=127.0.0.1') }
 
-  it 'includes the \'custom\' key/value' do
-    expect(subject).to include('custom=random')
-  end
+  it { expect(subject).to include('custom=random') }
 end

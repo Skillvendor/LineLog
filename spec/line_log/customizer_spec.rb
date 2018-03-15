@@ -20,42 +20,24 @@ describe LineLog::Customizer do
 
   subject { middleware.call(event) }
 
-  before { LineLog::Customizer.options = { custom: 'random'} }
+  before(:each) do 
+    LineLog::Customizer.data = { custom: 'random'}
+    subject
+  end
 
   after { File.open(file, 'w') {} }
 
-  it 'includes the \'method\' key/value' do
-    subject
-    expect(IO.read(file)).to include('method=GET')
-  end
+  it { expect(IO.read(file)).to include('method=GET') }
 
-  it 'includes the \'path\' key/value' do
-    subject
-    expect(IO.read(file)).to include('path=/happy_path')
-  end
+  it { expect(IO.read(file)).to include('path=/happy_path') }
 
-  it 'includes the \'format\' key/value' do
-    subject
-    expect(IO.read(file)).to include('format=text/html')
-  end
+  it { expect(IO.read(file)).to include('format=text/html') }
 
-  it 'includes the \'ip\' key/value' do
-    subject
-    expect(IO.read(file)).to include('ip=127.0.0.1')
-  end
+  it { expect(IO.read(file)).to include('ip=127.0.0.1') }
 
-  it 'includes the \'status\' key/value' do
-    subject
-    expect(IO.read(file)).to include('status=200')
-  end
+  it { expect(IO.read(file)).to include('status=200') }
 
-  it 'includes the \'duration\' key/value' do
-    subject
-    expect(IO.read(file)).to include('duration=0.00')
-  end
+  it { expect(IO.read(file)).to include('duration=0.00') }
 
-  it 'includes the \'custom\' key/value' do
-    subject
-    expect(IO.read(file)).to include('custom=random')
-  end
+  it { expect(IO.read(file)).to include('custom=random') }
 end

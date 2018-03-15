@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["skillvendor193@gmail.com"]
 
   spec.summary       = %q{ custom logger for rack based applications }
-  spec.description   = %q{ LineLog is built to help you have customs logs in sinatra(should support any rack application but it is not tested for that). LineLog welcomes contribution that would make it better and also any constructive feedback.}
+  spec.description   = %q{ LineLog is built to help you have customs logs in Sinatra. LineLog welcomes contribution that would make it better and also any constructive feedback.}
   spec.homepage      = "https://github.com/Skillvendor/LineLog"
   spec.license       = "MIT"
 
