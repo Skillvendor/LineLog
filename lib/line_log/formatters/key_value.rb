@@ -17,7 +17,7 @@ module LineLog
         # Exactly preserve the previous output
         # Parsing this can be ambigious if the error messages contains
         # a single quote
-        return "'#{value}'" if key == :error  
+        return "'#{value}'" if value.is_a? String
         return Kernel.format('%.2f', value) if value.is_a? Float
 
         value

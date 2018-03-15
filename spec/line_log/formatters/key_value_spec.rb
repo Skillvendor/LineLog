@@ -12,11 +12,11 @@ describe LineLog::Formatters::KeyValue do
 
   subject { described_class.new.call(options) }
 
-  it { expect(subject).to include('method=GET') }
+  it { expect(subject).to include("method='GET'") }
 
-  it { expect(subject).to include('path=/my_path') }
+  it { expect(subject).to include("path='/my_path'") }
 
   it { expect(subject).to include('status=200') }
 
-  it { expect(subject).to include('custom=random') }
+  it { expect(subject).to include("custom='random'") }
 end

@@ -17,21 +17,21 @@ describe LineLog::MessageBuilder do
   before(:each) do 
     allow(Time).to receive(:now).and_return(Time.parse('2018-03-13 16:21:25 +0000'))
 
-    LineLog::Customizer.data = { custom: 'random' }
+    LineLog::Customizer.data = { custom: 'random random' }
     LineLog::Customizer.formatter = LineLog::Formatters::KeyValue.new
   end
 
-  it { expect(subject).to include('method=GET') }
+  it { expect(subject).to include("method='GET'") }
 
-  it { expect(subject).to include('path=/happy_path') }
+  it { expect(subject).to include("path='/happy_path'") }
 
   it { expect(subject).to include('status=200') }
 
   it { expect(subject).to include('duration=2.00') }
 
-  it { expect(subject).to include('format=text/html') }
+  it { expect(subject).to include("format='text/html'") }
 
-  it { expect(subject).to include('ip=127.0.0.1') }
+  it { expect(subject).to include("ip='127.0.0.1'") }
 
-  it { expect(subject).to include('custom=random') }
+  it { expect(subject).to include("custom='random random'") }
 end

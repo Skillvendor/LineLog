@@ -27,17 +27,17 @@ describe LineLog::Customizer do
 
   after { File.open(file, 'w') {} }
 
-  it { expect(IO.read(file)).to include('method=GET') }
+  it { expect(IO.read(file)).to include("method='GET'") }
 
-  it { expect(IO.read(file)).to include('path=/happy_path') }
+  it { expect(IO.read(file)).to include("path='/happy_path'") }
 
-  it { expect(IO.read(file)).to include('format=text/html') }
+  it { expect(IO.read(file)).to include("format='text/html'") }
 
-  it { expect(IO.read(file)).to include('ip=127.0.0.1') }
+  it { expect(IO.read(file)).to include("ip='127.0.0.1'") }
 
   it { expect(IO.read(file)).to include('status=200') }
 
   it { expect(IO.read(file)).to include('duration=0.00') }
 
-  it { expect(IO.read(file)).to include('custom=random') }
+  it { expect(IO.read(file)).to include("custom='random'") }
 end
