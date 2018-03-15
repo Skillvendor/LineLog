@@ -35,7 +35,7 @@ Or install it yourself as:
   By default the logger will output the method, path, format, ip, status and duration of the request:
 
 ```
-  I, [2018-03-15T09:27:41.062397 #67]  INFO -- : method=GET path=/favicon.ico format=image/webp,image/apng,image/*,*/*;q=0.8 ip=127.0.0.0 status=200 duration=2.36
+  I, [2018-03-15T10:52:52.344791 #188]  INFO -- : method='GET' path='/favicon.ico' format='image/webp,image/apng,image/*,*/*;q=0.8' ip='127.0.0.0' status=404 duration=2.36
 ```
   
   This can be overwritten by custom data.
@@ -53,7 +53,8 @@ Or install it yourself as:
       user: '-',
       params: request.params,
       agent: request.env['HTTP_USER_AGENT'] || '',
-      protocol: request.scheme
+      protocol: request.scheme,
+      requester: 'John Smith'
     }
   end
   
@@ -61,7 +62,7 @@ Or install it yourself as:
 
   The output of this would be:
 ```
-  I, [2018-03-15T09:27:41.062397 #67]  INFO -- : method=GET path=/favicon.ico format=image/webp,image/apng,image/*,*/*;q=0.8 ip=127.0.0.0 status=200 duration=2.36 user=- params={} agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36 protocol=http
+  I, [2018-03-15T10:52:52.344791 #188]  INFO -- : method='GET' path='/favicon.ico' format='image/webp,image/apng,image/*,*/*;q=0.8' ip='127.0.0.0' status=404 duration=0.00 user='-' params={} agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36' protocol='http' requester='John Smith'
 ```
 
 ## Inner Workings
