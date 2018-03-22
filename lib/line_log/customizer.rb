@@ -15,10 +15,10 @@ module LineLog
 
     def _call(event)
       began_at = Time.now
-      @status, @headers, @response = @app.call(event)
-
-      message = LineLog::MessageBuilder.new(event, @status, began_at).call
-      LineLog::Writer.call(message, @logger)
+      @status, @headers, @response = @app.call(event).tap {
+        message = LineLog::MessageBuilder.new(event, @status, began_at).call
+        LineLog::Writer.call(message, @logger)
+      }
     end
   end
 end
