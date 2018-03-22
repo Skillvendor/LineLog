@@ -15,10 +15,11 @@ module LineLog
 
     def _call(event)
       began_at = Time.now
-      @status, @headers, @response = @app.call(event).tap {
-        message = LineLog::MessageBuilder.new(event, @status, began_at).call
+      @app.call(event).tap do |request_data|
+        request_status = request_data.first # status is on the first position, it is an array
+        message = LineLog::MessageBuilder.new(event, request_status, began_at).call
         LineLog::Writer.call(message, @logger)
-      }
+      end
     end
   end
 end
